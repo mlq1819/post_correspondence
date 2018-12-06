@@ -101,7 +101,7 @@ int main(){
 					matching = false;
 					cout << "Doesn't match:" << endl;
 					for(unsigned int j=0; j<top.length(); j++){
-						if(j>=bottom.length() || top[j]==bottom[i])
+						if(j>=bottom.length() || top[j]==bottom[j])
 							cout << top[j];
 						else{
 							if(j==0 || top[j-1]==bottom[j-1])
