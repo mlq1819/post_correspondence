@@ -13,11 +13,11 @@ class Domino{
 		string bottom;
 		bool valid;
 	public:
-		Domino(string top, string bottom){this->top=top; this->bottom=bottom; this->valid=true;};
+		Domino(string t, string b){this->top=t; this->bottom=b; this->valid=true;};
 		Domino(){this->valid=false;};
 		string getTop() const {if(this->valid) return this->top; return "BAD";};
 		string getBottom() const {if(this->valid) return this->bottom; return "BAD";};
-		void print() const {cout << "[" << this->top << "/" << this->bottom << "] ";};
+		void print() const {if(this->valid )cout << "[" << this->top << "/" << this->bottom << "] "; else cout << "[INVALID]";};
 };
 
 int main(){
