@@ -40,7 +40,11 @@ int main(){
 			break;
 		}
 		dominoes.push_back(*(new Domino(top, bottom)));
-		dominoes.back().print();
+		for(unsigned int i=0; i<dominoes.size(); i++){
+			cout << i << ":";
+			dominoes[i+1].print();
+		}
+		cout << endl;
 	} while (cont);
 	cout << endl;
 	cont = true;
@@ -52,11 +56,13 @@ int main(){
 	string str = "";
 	do{
 		cout << endl;
+		cout << "{";
 		for(unsigned int i=0; i<dominoes.size(); i++){
 			cout << i << ":";
 			dominoes[i+1].print();
 		}
-		cout << "\nAdd Domino by number-- \"" << reset << "\" to reset -- \"" << phrase << "\" to exit\n" << top << "\n" << bottom << endl;
+		cout << "}" << endl;
+		cout << "Add Domino by number-- \"" << reset << "\" to reset -- \"" << phrase << "\" to exit\n" << top << "\n" << bottom << endl;
 		str = "";
 		cin >> str;
 		if(str.compare(phrase)==0){
