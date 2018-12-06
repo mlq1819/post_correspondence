@@ -82,8 +82,8 @@ int main(){
 			if(top[i]!=bottom[i]){
 				matching = false;
 				cout << "Doesn't match:" << endl;
-				for(unsigned int j=0; j<top.length; j++){
-					if(j>=bottom.length() || top[j]=bottom[i])
+				for(unsigned int j=0; j<top.length(); j++){
+					if(j>=bottom.length() || top[j]==bottom[i])
 						cout << top[j];
 					else{
 						if(j==0 || top[j-1]==bottom[j-1])
@@ -94,8 +94,8 @@ int main(){
 					}
 				}
 				cout << endl;
-				for(unsigned int j=0; j<bottom.length; j++){
-					if(j>=top.length() || top[j]=bottom[i])
+				for(unsigned int j=0; j<bottom.length(); j++){
+					if(j>=top.length() || top[j]==bottom[i])
 						cout << bottom[j];
 					else{
 						if(j==0 || top[j-1]==bottom[j-1])
