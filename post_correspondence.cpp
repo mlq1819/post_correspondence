@@ -92,8 +92,6 @@ int main(){
 			cout << "Undid one operation" << endl;
 		} else {
 			unsigned int num = atoi(str.c_str());
-			last_top = top;
-			last_bottom = bottom;
 			top = top + dominoes[num-1].getTop();
 			bottom = bottom + dominoes[num-1].getBottom();
 			order.push_back(num);
