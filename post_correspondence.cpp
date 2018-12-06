@@ -35,13 +35,13 @@ int main(){
 		cout << "Input bottom:" << endl;
 		string bottom = "";
 		cin >> bottom;
-		if(bottom.equals(phrase)){
+		if(bottom.compare(phrase)==0){
 			cont = false;
 			break;
 		}
 		dominoes.push_back(*(new Domino(top, bottom)));
 	} while (cont);
-	coout << "\n\n" << endl;
+	cout << "\n\n" << endl;
 	cont = true;
 	dominoes.shrink_to_fit();
 	string top = "";
@@ -57,17 +57,17 @@ int main(){
 		cout << "\nAdd Domino by number-- \"" << reset << "\" to reset -- \"" << phrase << "\" to exit\n" << top << "\n" << bottom << endl;
 		str = "";
 		cin >> str;
-		if(str.equals(exit)){
+		if(str.compare(phrase)==0){
 			cont = false;
 			break;
-		} else if(str.equals(reset)){
+		} else if(str.compare(reset)==0){
 			top = "";
 			bottom = "";
 			cout << "Reset top and bottom" << endl;
 		} else {
 			unsigned int num = atoi(str);
-			top = top + dominoes[i-1].getTop();
-			bottom = bottom + dominoes[i-1].getBottom();
+			top = top + dominoes[num-1].getTop();
+			bottom = bottom + dominoes[num-1].getBottom();
 		}
 	} while (cont);
 	
