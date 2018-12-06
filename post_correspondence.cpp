@@ -78,7 +78,7 @@ int main(){
 			bottom = bottom + dominoes[num-1].getBottom();
 		}
 		bool matching = top.length()==bottom.length();
-		for(unsigned int i=0; i<top.length && i<bottom.length; i++){
+		for(unsigned int i=0; i<top.length() && i<bottom.length(); i++){
 			if(top[i]!=bottom[i]){
 				matching = false;
 				cout << "Doesn't match:" << endl;
