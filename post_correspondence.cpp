@@ -28,7 +28,7 @@ int main(){
 		cout << "Input Dominoes: \"" << phrase << "\" to quit\nInput top:" << endl;
 		string top = "";
 		cin >> top;
-		if(top.equals(phrase)){
+		if(top.compare(phrase)==0){
 			cont = false;
 			break;
 		}
@@ -65,7 +65,7 @@ int main(){
 			bottom = "";
 			cout << "Reset top and bottom" << endl;
 		} else {
-			unsigned int num = atoi(str);
+			unsigned int num = atoi(str.c_str());
 			top = top + dominoes[num-1].getTop();
 			bottom = bottom + dominoes[num-1].getBottom();
 		}
