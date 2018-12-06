@@ -118,10 +118,10 @@ int main(){
 					break;
 				}
 			}
-		}
-		if(matching){
-			cont = false;
-			cout << "Top and Bottom Match!\n\"" << top << "\"\n\"" << bottom << "\"" << endl;
+			if(matching){
+				cont = false;
+				cout << "Top and Bottom Match!\n\"" << top << "\"\n\"" << bottom << "\"" << endl;
+			}
 		}
 	} while (cont);
 	
