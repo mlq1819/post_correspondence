@@ -41,8 +41,8 @@ int main(){
 		}
 		dominoes.push_back(Domino(top, bottom));
 		for(unsigned int i=0; i<dominoes.size(); i++){
-			cout << i << ":";
-			dominoes[i+1].print();
+			cout << i+1 << ":";
+			dominoes[i].print();
 		}
 		cout << endl;
 	} while (cont);
@@ -58,8 +58,8 @@ int main(){
 		cout << endl;
 		cout << "{";
 		for(unsigned int i=0; i<dominoes.size(); i++){
-			cout << i << ":";
-			dominoes[i+1].print();
+			cout << i+1 << ":";
+			dominoes[i].print();
 		}
 		cout << "}" << endl;
 		cout << "Add Domino by number-- \"" << reset << "\" to reset -- \"" << phrase << "\" to exit\n" << top << "\n" << bottom << endl;
