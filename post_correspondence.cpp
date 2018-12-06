@@ -123,6 +123,7 @@ int main(){
 								cout << ">";
 						}
 					}
+					cout << endl;
 					order.pop_back();
 					cout << "Undid previous action" << endl;
 					break;
