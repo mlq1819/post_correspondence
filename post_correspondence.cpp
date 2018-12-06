@@ -50,9 +50,7 @@ int main(){
 	cont = true;
 	dominoes.shrink_to_fit();
 	string top = "";
-	string last_top = "";
 	string bottom = "";
-	string last_bottom = "";
 	vector<unsigned int> order = vector<unsigned int>();
 	phrase = "exit";
 	string reset = "reset";
@@ -60,12 +58,25 @@ int main(){
 	do{
 		cout << endl;
 		cout << "{";
+		top = "";
+		bottom = "";
+		for(unsigned int i=0; i<order.size(); i++){
+			top = top + dominoes[order[i]-1].getTop();
+			bottom = bottom + dominoes[order[i]-1].getBottom();
+		}
 		for(unsigned int i=0; i<dominoes.size(); i++){
 			cout << i+1 << ":";
 			dominoes[i].print();
 		}
 		cout << "}" << endl;
-		cout << "Add Domino by number-- \"" << reset << "\" to reset -- \"" << phrase << "\" to exit\n|" << top << "|\n|" << bottom << "|" << endl;
+		cout << "Add Domino by number-- \"" << reset << "\" to reset -- \"" << phrase << "\" to exit" << endl;
+		cout << "{";
+		for(unsigned int i=0; i<order.size(); i++){
+			if(i>0)
+				cout << ",";
+			cout << order[i];
+		}
+		cout << "}\n|" << top << "|\n|" << bottom << "|" << endl;
 		str = "";
 		cin >> str;
 		if(str.compare(phrase)==0){
@@ -77,10 +88,8 @@ int main(){
 			order.clear();
 			cout << "Reset top and bottom" << endl;
 		} else if (str.compare("undo")==0){
-			top = last_top;
-			bottom = last_bottom;
 			order.pop_back();
-			cout << "Undid last operation" << endl;
+			cout << "Undid one operation" << endl;
 		} else {
 			unsigned int num = atoi(str.c_str());
 			last_top = top;
@@ -106,7 +115,7 @@ int main(){
 					}
 					cout << endl;
 					for(unsigned int j=0; j<bottom.length(); j++){
-						if(j>=top.length() || top[j]==bottom[i])
+						if(j>=top.length() || top[j]==bottom[j])
 							cout << bottom[j];
 						else{
 							if(j==0 || top[j-1]==bottom[j-1])
@@ -116,8 +125,6 @@ int main(){
 								cout << ">";
 						}
 					}
-					top=last_top;
-					bottom=last_bottom;
 					order.pop_back();
 					cout << "Undid previous action" << endl;
 					break;
