@@ -50,7 +50,9 @@ int main(){
 	cont = true;
 	dominoes.shrink_to_fit();
 	string top = "";
+	string last_top = "";
 	string bottom = "";
+	string last_bottom = "";
 	phrase = "exit";
 	string reset = "reset";
 	string str = "";
@@ -72,43 +74,49 @@ int main(){
 			top = "";
 			bottom = "";
 			cout << "Reset top and bottom" << endl;
+		} else if (str.compare("undo")==0){
+			top = last_top;
+			bottom = last_bottom;
+			cout << "Undid last operation" << endl;
 		} else {
 			unsigned int num = atoi(str.c_str());
+			last_top = top;
+			last_bottom = bottom;
 			top = top + dominoes[num-1].getTop();
 			bottom = bottom + dominoes[num-1].getBottom();
-		}
-		bool matching = top.length()==bottom.length();
-		for(unsigned int i=0; i<top.length() && i<bottom.length(); i++){
-			if(top[i]!=bottom[i]){
-				matching = false;
-				cout << "Doesn't match:" << endl;
-				for(unsigned int j=0; j<top.length(); j++){
-					if(j>=bottom.length() || top[j]==bottom[i])
-						cout << top[j];
-					else{
-						if(j==0 || top[j-1]==bottom[j-1])
-							cout << "<";
-						cout << top[j];
-						if(j+1>=top.length() || j+1>=bottom.length() || top[j+1]==bottom[j+1])
-							cout << ">";
+			bool matching = top.length()==bottom.length();
+			for(unsigned int i=0; i<top.length() && i<bottom.length(); i++){
+				if(top[i]!=bottom[i]){
+					matching = false;
+					cout << "Doesn't match:" << endl;
+					for(unsigned int j=0; j<top.length(); j++){
+						if(j>=bottom.length() || top[j]==bottom[i])
+							cout << top[j];
+						else{
+							if(j==0 || top[j-1]==bottom[j-1])
+								cout << "<";
+							cout << top[j];
+							if(j+1>=top.length() || j+1>=bottom.length() || top[j+1]==bottom[j+1])
+								cout << ">";
+						}
 					}
-				}
-				cout << endl;
-				for(unsigned int j=0; j<bottom.length(); j++){
-					if(j>=top.length() || top[j]==bottom[i])
-						cout << bottom[j];
-					else{
-						if(j==0 || top[j-1]==bottom[j-1])
-							cout << "<";
-						cout << bottom[j];
-						if(j+1>=top.length() || j+1>=bottom.length() || top[j+1]==bottom[j+1])
-							cout << ">";
+					cout << endl;
+					for(unsigned int j=0; j<bottom.length(); j++){
+						if(j>=top.length() || top[j]==bottom[i])
+							cout << bottom[j];
+						else{
+							if(j==0 || top[j-1]==bottom[j-1])
+								cout << "<";
+							cout << bottom[j];
+							if(j+1>=top.length() || j+1>=bottom.length() || top[j+1]==bottom[j+1])
+								cout << ">";
+						}
 					}
+					top=last_top;
+					bottom=last_bottom;
+					cout << "Undid previous action" << endl;
+					break;
 				}
-				top="";
-				bottom="";
-				cout << "Reset top and bottom" << endl;
-				break;
 			}
 		}
 		if(matching){
