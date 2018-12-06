@@ -53,6 +53,7 @@ int main(){
 	string last_top = "";
 	string bottom = "";
 	string last_bottom = "";
+	vector<unsigned int> order = vector<int>();
 	phrase = "exit";
 	string reset = "reset";
 	string str = "";
@@ -73,10 +74,12 @@ int main(){
 		} else if(str.compare(reset)==0){
 			top = "";
 			bottom = "";
+			order.clear();
 			cout << "Reset top and bottom" << endl;
 		} else if (str.compare("undo")==0){
 			top = last_top;
 			bottom = last_bottom;
+			order.pop_back();
 			cout << "Undid last operation" << endl;
 		} else {
 			unsigned int num = atoi(str.c_str());
@@ -84,6 +87,7 @@ int main(){
 			last_bottom = bottom;
 			top = top + dominoes[num-1].getTop();
 			bottom = bottom + dominoes[num-1].getBottom();
+			order.push_back(num);
 			bool matching = top.length()==bottom.length();
 			for(unsigned int i=0; i<top.length() && i<bottom.length(); i++){
 				if(top[i]!=bottom[i]){
@@ -114,6 +118,7 @@ int main(){
 					}
 					top=last_top;
 					bottom=last_bottom;
+					order.pop_back();
 					cout << "Undid previous action" << endl;
 					break;
 				}
@@ -121,6 +126,13 @@ int main(){
 			if(matching){
 				cont = false;
 				cout << "Top and Bottom Match!\n\"" << top << "\"\n\"" << bottom << "\"" << endl;
+				cout << "{";
+				for(unsigned int i=0; i<order.size(); i++){
+					if(i!=0)
+						cout << ",";
+					cout << order[i];
+				}
+				cout << "}" << endl;
 			}
 		}
 	} while (cont);
