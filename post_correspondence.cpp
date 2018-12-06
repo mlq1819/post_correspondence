@@ -62,7 +62,7 @@ int main(){
 			dominoes[i].print();
 		}
 		cout << "}" << endl;
-		cout << "Add Domino by number-- \"" << reset << "\" to reset -- \"" << phrase << "\" to exit\n" << top << "\n" << bottom << endl;
+		cout << "Add Domino by number-- \"" << reset << "\" to reset -- \"" << phrase << "\" to exit\n|" << top << "|\n|" << bottom << "|" << endl;
 		str = "";
 		cin >> str;
 		if(str.compare(phrase)==0){
