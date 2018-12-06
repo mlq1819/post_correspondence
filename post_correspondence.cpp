@@ -53,7 +53,7 @@ int main(){
 	string last_top = "";
 	string bottom = "";
 	string last_bottom = "";
-	vector<unsigned int> order = vector<int>();
+	vector<unsigned int> order = vector<unsigned int>();
 	phrase = "exit";
 	string reset = "reset";
 	string str = "";
