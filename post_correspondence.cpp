@@ -40,8 +40,8 @@ int main(){
 			break;
 		}
 		dominoes.push_back(*(new Domino(top, bottom)));
+		dominoes.back().print();
 	} while (cont);
-	cout << "test" << endl;
 	cout << endl;
 	cont = true;
 	dominoes.shrink_to_fit();
@@ -50,7 +50,6 @@ int main(){
 	phrase = "exit";
 	string reset = "reset";
 	string str = "";
-	cout << "test" << endl;
 	do{
 		cout << endl;
 		for(unsigned int i=0; i<dominoes.size(); i++){
