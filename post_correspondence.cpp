@@ -39,7 +39,7 @@ int main(){
 			cont = false;
 			break;
 		}
-		dominoes.push_back(*(new Domino(top, bottom)));
+		dominoes.push_back(Domino(top, bottom));
 		for(unsigned int i=0; i<dominoes.size(); i++){
 			cout << i << ":";
 			dominoes[i+1].print();
@@ -79,8 +79,5 @@ int main(){
 		}
 	} while (cont);
 	
-	for(unsigned int i=0; i<dominoes.size(); i++){
-		delete &(dominoes[i]);
-	}
 	return 0;
 }
