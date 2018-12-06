@@ -18,7 +18,7 @@ class Domino{
 		string getTop() const {if(this->valid) return this->top; return "BAD";};
 		string getBottom() const {if(this->valid) return this->bottom; return "BAD";};
 		void print() const {cout << "[" << this->top << "/" << this->bottom << "] ";};
-}
+};
 
 int main(){
 	vector<Domino> dominoes = vector<Domino>();
